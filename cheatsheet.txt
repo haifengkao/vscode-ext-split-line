@@ -1,0 +1,12 @@
+#check syntax error
+npm install
+npm run compile
+
+#prepare release
+vsce package
+
+#local installation
+code --install-extension ./split-line-no-keybinding-0.0.1.vsix
+
+#publish
+vsce publish patch

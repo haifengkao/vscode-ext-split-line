@@ -12,12 +12,12 @@ interface Option {
  * @export
  * @param origin origin single line string
  * @param [sep=","] separator
- * @param opt option 
+ * @param opt option
  * @returns result string already split into lines by '\n'
  */
 export default function splitIntoLines(
-  origin: string, 
-  sep = ",", 
+  origin: string,
+  sep = ",",
   opt: Option = {}
 ): string {
   const str = origin.trim()
@@ -32,7 +32,7 @@ export default function splitIntoLines(
   sepIndexes.forEach(addLineBreak)
 
   const ret = strArr.join("")
-  return opt.breakStartEnd 
+  return opt.breakStartEnd
     ? '\n' + ret + '\n'
     : ret
 }
@@ -50,24 +50,24 @@ function findValidSeparator(str: string, sep: string): number[] {
   for (let i = 0; i < str.length; i++) {
     const c = str[i]
     switch (true) {
-      case endBracketReg.test(c):
-        if (inString) { break }
-        // occurs right single bracket, clear sepIndex
-        if (!inBracketCount) { sepIndexArr = [] }
-        else { inBracketCount-- }
-        break
-      case startBracketReg.test(c): 
-        // occurs left bracket, change into in-bracket state
-        if (!inString) { inBracketCount++ }
-        break
-      case quoteReg.test(c):
-        if (!inString) {
-          currentQuote = c
-          inString = true
-        } else if (c === currentQuote) {
-          inString = false
-        }
-        break
+    //   case endBracketReg.test(c):
+    //     if (inString) { break }
+    //     // occurs right single bracket, clear sepIndex
+    //     if (!inBracketCount) { sepIndexArr = [] }
+    //     else { inBracketCount-- }
+    //     break
+    //   case startBracketReg.test(c):
+    //     // occurs left bracket, change into in-bracket state
+    //     if (!inString) { inBracketCount++ }
+    //     break
+    //   case quoteReg.test(c):
+    //     if (!inString) {
+    //       currentQuote = c
+    //       inString = true
+    //     } else if (c === currentQuote) {
+    //       inString = false
+    //     }
+    //     break
       case c === sep:
         if (!inString && !inBracketCount) { sepIndexArr.push(i) }
         break
