@@ -18,7 +18,7 @@
 		"commands": [
 			{
 				"command": "extension.splitLine",
-				"title": "split line"
+				"title": "split line no keybinding"
 			}
 		]
 	},
